@@ -1,0 +1,22 @@
+RECOMPILADO - ÍCONES PNG | versão 1.5 | 27/09/2026
+
+Origem: símbolo de balão de diálogo aprovado no guia v1.5.
+Geometria interna do microfone, > e _ mantida; respiro de 10% ao redor da silhueta completa.
+Cores sólidas; sem gradientes.
+
+Tamanhos (quadrados, em pixels): 16, 32, 48, 64, 72, 96, 128, 144, 152, 167, 180, 192, 256, 384, 512, 1024 e 3000.
+16/32/48: favicon e interfaces pequenas (a leitura do microfone diminui nesses tamanhos).
+180/192/512: atalhos e ícones de aplicativos.
+256/384/1024: avatares, perfis e publicações.
+3000: arte digital quadrada de alta resolução, como capa de podcast.
+
+Variantes:
+01 transparente verde - símbolo #2DD37D sobre transparência.
+02 transparente branco - símbolo branco sobre transparência; aplicar em fundo escuro.
+03 transparente escuro - símbolo #080B0D sobre transparência; aplicar em fundo claro.
+04 fundo escuro - #2DD37D sobre #080B0D.
+05 fundo elevado - #2DD37D sobre #141A1C.
+06 fundo branco - #080B0D sobre #FFFFFF.
+07 fundo verde - #080B0D sobre #2DD37D.
+
+Os PNGs de 3000 px são ampliações raster de uma base de 1254 px. Para impressão grande, gravação, corte ou escala ilimitada, é necessária uma versão vetorial real aprovada.
