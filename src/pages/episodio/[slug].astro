@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { episodes } from "../../data/episodes";
+
+export function getStaticPaths() {
+  return episodes.map((e) => ({ params: { slug: e.slug }, props: { episode: e } }));
+}
+
+const { episode } = Astro.props;
+const { numeroLabel, categoria, titulo, descricao, convidados, capa, publicadoEm } = episode;
+
+const description = descricao;
+---
+
+<BaseLayout title={titulo} description={description}>
+  <article class="episode-page">
+    <div class="container container--text">
+      <a href="/episodios/" class="back-link">← Episódios</a>
+
+      <header class="episode-head">
+        <img src={capa} alt="" width="512" height="512" loading="eager" class="episode-cover" />
+        <div>
+          <p class="label">
+            {numeroLabel} · {categoria}
+          </p>
+          <h1 class="episode-title">{titulo}</h1>
+          <p class="episode-meta">
+            {publicadoEm}
+            {convidados.length > 0 && <> · com {convidados.join(", ")}</>}
+          </p>
+          <p class="episode-desc">{descricao}</p>
+
+          <div class="episode-actions">
+            <a class="btn btn--primary" href="/episodios/">Ver todos os episódios</a>
+          </div>
+        </div>
+      </header>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .episode-page {
+    padding-top: var(--space-4);
+  }
+
+  .back-link {
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    display: inline-block;
+    margin-bottom: var(--space-5);
+  }
+
+  .back-link:hover {
+    color: var(--color-green);
+  }
+
+  .episode-head {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .episode-cover {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .episode-title {
+    font-size: 2.1rem;
+  }
+
+  .episode-meta {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .episode-desc {
+    color: var(--color-text);
+    font-size: 1.05rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.4rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    margin-top: var(--space-3);
+  }
+
+  .btn--primary {
+    background-color: var(--color-green);
+    color: #071d12;
+  }
+
+  .btn--primary:hover {
+    background-color: var(--color-green-dark);
+    color: #ffffff;
+  }
+
+  @media (max-width: 640px) {
+    .episode-head {
+      grid-template-columns: 1fr;
+    }
+
+    .episode-cover {
+      max-width: 320px;
+    }
+  }
+</style>

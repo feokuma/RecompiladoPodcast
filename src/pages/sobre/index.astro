@@ -1,0 +1,149 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Sobre";
+const description =
+  "Conheça o Recompilado Podcast: conversas que ajudam a construir o próximo build, falando de tecnologia e de quem trabalha com software.";
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container">
+    <section class="page-title">
+      <p class="label">Sobre</p>
+      <h1>Um podcast para ampliar boas conversas em tecnologia</h1>
+      <p class="page-title__lede">
+        O Recompilado reúne pessoas que vivem tecnologia para conversar sobre
+        práticas, decisões, aprendizados e as mudanças no trabalho de construir
+        software.
+      </p>
+    </section>
+
+    <section class="split-section">
+      <div class="split-section__main">
+        <h2>O programa</h2>
+        <p>
+          A proposta é aproximar experiências reais de engenharia, produto,
+          arquitetura, ferramentas e gestão. Cada episódio busca trazer
+          repertório para quem cria, lidera ou evolui produtos digitais — sempre
+          com uma linguagem acessível e bastante profundidade.
+        </p>
+        <p>
+          Além do lado técnico, o Recompilado conversa sobre organização do
+          trabalho e saúde mental, porque quem constrói tecnologia também
+          precisa cuidar de quem faz o software acontecer.
+        </p>
+        <p>
+          O Recompilado é apresentado por Fernando Okuma e produzido pela
+          Compasso Coolab.
+        </p>
+        <p class="tagline-highlight">
+          Conversas que ajudam a construir o próximo build.
+        </p>
+      </div>
+      <aside class="quote-panel">
+        <p class="quote-panel__title">Objetivos</p>
+        <ul>
+          <li>Compartilhar conhecimento técnico e de produto.</li>
+          <li>Valorizar experiências de profissionais da comunidade.</li>
+          <li>Manter um arquivo acessível dos episódios publicados.</li>
+          <li>Aproximar ouvintes, convidados e temas relevantes.</li>
+        </ul>
+        <a class="btn" href="/episodios/">Ouvir episódios</a>
+      </aside>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-title {
+    padding: var(--space-4) 0 var(--space-5);
+  }
+
+  .page-title h1 {
+    font-size: 2.2rem;
+    margin: var(--space-2) 0 var(--space-3);
+    max-width: 22ch;
+  }
+
+  .page-title__lede {
+    color: var(--color-text-muted);
+    font-size: 1.08rem;
+    max-width: 52ch;
+    margin: 0;
+  }
+
+  .split-section {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-7);
+    align-items: start;
+    padding: var(--space-3) 0 var(--space-8);
+  }
+
+  .split-section__main h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .split-section__main p {
+    font-size: 1.05rem;
+  }
+
+  .tagline-highlight {
+    font-family: var(--font-mono);
+    color: var(--color-green);
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    border-left: 3px solid var(--color-green);
+    padding-left: var(--space-4);
+    margin: var(--space-5) 0 0;
+  }
+
+  .quote-panel {
+    background-color: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  .quote-panel__title {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    font-size: 0.8rem;
+    margin: 0 0 var(--space-3);
+  }
+
+  .quote-panel ul {
+    margin: 0 0 var(--space-5);
+    padding-left: 1.1rem;
+    color: var(--color-text-muted);
+  }
+
+  .quote-panel li {
+    margin-bottom: var(--space-2);
+  }
+
+  .btn {
+    display: inline-block;
+    background-color: var(--color-green);
+    color: #071d12;
+    padding: 0.75rem 1.4rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+  }
+
+  .btn:hover {
+    background-color: var(--color-green-dark);
+    color: #ffffff;
+  }
+
+  @media (max-width: 760px) {
+    .split-section {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+  }
+</style>

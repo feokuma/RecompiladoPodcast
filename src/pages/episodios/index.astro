@@ -1,0 +1,230 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { episodes } from "../../data/episodes";
+
+const title = "Episódios";
+const description =
+  "Os episódios do Recompilado Podcast: conversas sobre tecnologia e o trabalho de construir software.";
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="page-main container">
+    <section class="page-title">
+      <p class="label">Episódios</p>
+      <h1>Últimas conversas do Recompilado</h1>
+      <p class="page-title__lede">
+        Navegue pelas conversas do programa, busque por temas e abra cada
+        episódio para saber mais.
+      </p>
+    </section>
+
+    <section class="toolbar" aria-label="Filtros de episódios">
+      <label class="search-box">
+        <span>Buscar</span>
+        <input
+          id="episode-search"
+          type="search"
+          placeholder="Tema ou palavra-chave"
+          data-episode-search
+        />
+      </label>
+      <a class="button button--secondary" href="/sobre/">
+        Sobre o programa
+      </a>
+    </section>
+
+    <p id="episodes-status" class="status-message" role="status" data-episode-status>{episodes.length === 0 ? "Nenhum episódio publicado ainda." : `${episodes.length} episódio(s) disponível(is).`}</p>
+
+    <section id="episodes-list" class="episodes-list" aria-label="Lista de episódios" data-episodes-list>
+      {episodes.map((ep) => (
+        <a href={`/episodio/${ep.slug}`} class="episode-row" data-episode-label={ep.titulo.toLowerCase()}>
+          <div class="episode-row__cover">
+            <img src={ep.capa} alt="" width="96" height="96" loading="lazy" />
+          </div>
+          <div class="episode-row__body">
+            <p class="label">
+              #{String(ep.numero).padStart(3, "0")} · {ep.categoria}
+            </p>
+            <h2 class="episode-row__title">{ep.titulo}</h2>
+            <p class="episode-row__desc">{ep.descricao}</p>
+          </div>
+          <span class="episode-row__arrow" aria-hidden="true">→</span>
+        </a>
+      ))}
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  const input = document.querySelector("[data-episode-search]") as HTMLInputElement | null;
+  const status = document.querySelector("[data-episode-status]") as HTMLElement | null;
+  const list = document.querySelector("[data-episodes-list]");
+  const rows = Array.from(document.querySelectorAll<HTMLElement>("[data-episode-label]"));
+
+  if (input && list && status) {
+    input.addEventListener("input", () => {
+      const q = input.value.trim().toLowerCase();
+      let count = 0;
+      for (const row of rows) {
+        const match = row.getAttribute("data-episode-label")?.includes(q) || !q;
+        row.hidden = !match;
+        if (match) count++;
+      }
+      status.textContent = count === 0 ? "Nenhum episódio encontrado." : `${count} episódio(s) encontrado(s).`;
+    });
+  }
+</script>
+
+<style>
+  .page-main {
+    padding: var(--space-6) var(--space-5) var(--space-8);
+  }
+
+  .page-title {
+    padding-bottom: var(--space-5);
+  }
+
+  .page-title h1 {
+    font-size: 2.2rem;
+    margin: var(--space-2) 0 var(--space-3);
+  }
+
+  .page-title__lede {
+    color: var(--color-text-muted);
+    font-size: 1.08rem;
+    max-width: 48ch;
+    margin: 0;
+  }
+
+  .toolbar {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    flex-wrap: wrap;
+    padding: var(--space-4) 0;
+    border-block: 1px solid var(--color-border-subtle);
+    margin-bottom: var(--space-5);
+  }
+
+  .search-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .search-box span {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .search-box input {
+    background-color: var(--color-bg-elevated);
+    color: var(--color-text);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    padding: 0.6rem 0.9rem;
+    font-size: 0.98rem;
+    font-family: inherit;
+  }
+
+  .search-box input:focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 2px;
+  }
+
+  .search-box input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.7;
+  }
+
+  .button {
+    padding: 0.65rem 1.2rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+
+  .button--secondary {
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text);
+  }
+
+  .button--secondary:hover {
+    border-color: var(--color-green);
+    color: var(--color-green);
+  }
+
+  .status-message {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin: 0 0 var(--space-4);
+  }
+
+  .episodes-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .episode-row {
+    display: grid;
+    grid-template-columns: 96px 1fr auto;
+    align-items: center;
+    gap: var(--space-4);
+    background-color: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3);
+    color: var(--color-text);
+  }
+
+  .episode-row:hover {
+    border-color: var(--color-green);
+    transform: translateX(2px);
+  }
+
+  .episode-row__cover img {
+    width: 96px;
+    height: 96px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+  }
+
+  .episode-row__body .label {
+    font-size: 0.7rem;
+  }
+
+  .episode-row__title {
+    font-size: 1.15rem;
+    margin: var(--space-1) 0 var(--space-1);
+  }
+
+  .episode-row__desc {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .episode-row__arrow {
+    color: var(--color-green);
+    font-size: 1.3rem;
+    padding: 0 var(--space-2);
+  }
+
+  @media (max-width: 560px) {
+    .episode-row {
+      grid-template-columns: 72px 1fr;
+    }
+
+    .episode-row__cover img {
+      width: 72px;
+      height: 72px;
+    }
+
+    .episode-row__arrow {
+      display: none;
+    }
+  }
+</style>

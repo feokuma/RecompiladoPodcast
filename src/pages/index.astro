@@ -1,0 +1,199 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <p class="label hero__label">P O D C A S T</p>
+        <h1 class="hero__title">
+          Conversas que ajudam a construir o próximo <em>build</em>.
+        </h1>
+        <p class="hero__lede">
+          O Recompilado fala de tecnologia e do trabalho de criar e entregar
+          software: desenvolvimento, arquitetura, ferramentas, gestão e o que
+          mais importa para quem está nesse universo.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="/episodios/">Ouvir episódios</a>
+          <a class="btn btn--ghost" href="/sobre/">Conhecer o programa</a>
+        </div>
+      </div>
+      <div class="hero__art" aria-label="Identidade visual do Recompilado">
+        <img
+          src="/brand/icone-verde-fundo-escuro.png"
+          alt=""
+          width="300"
+          height="300"
+          loading="eager"
+          class="hero__symbol"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="content-band">
+    <div class="container">
+      <div class="section-heading">
+        <p class="label">Proposta</p>
+        <h2>Conversas práticas para quem constrói software</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>Engenharia com contexto</h3>
+          <p>
+            Desenvolvimento, arquitetura, qualidade e entrega explicados com o
+            pé no mundo real de quem trabalha com código.
+          </p>
+        </article>
+        <article class="feature-card">
+          <h3>Produto e pessoas</h3>
+          <p>
+            Colaboração, liderança, times, organização e saúde mental: o lado
+            humano de construir tecnologia todos os dias.
+          </p>
+        </article>
+        <article class="feature-card">
+          <h3>Atualização constante</h3>
+          <p>
+            Os novos episódios ficam reunidos em uma área dedicada, para você
+            buscar, ouvir e compartilhar as conversas com facilidade.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: var(--space-8) 0;
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  .hero__label {
+    margin-bottom: var(--space-3);
+  }
+
+  .hero__title {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero__title em {
+    font-style: normal;
+    color: var(--color-green);
+  }
+
+  .hero__lede {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-top: var(--space-5);
+  }
+
+  .hero__art {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero__symbol {
+    width: min(300px, 100%);
+    height: auto;
+  }
+
+  /* ---------- Botões ---------- */
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.4rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.98rem;
+  }
+
+  .btn--primary {
+    background-color: var(--color-green);
+    color: #071d12;
+  }
+
+  .btn--primary:hover {
+    background-color: var(--color-green-dark);
+    color: #ffffff;
+  }
+
+  .btn--ghost {
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text);
+  }
+
+  .btn--ghost:hover {
+    border-color: var(--color-green);
+    color: var(--color-green);
+  }
+
+  /* ---------- Feature band ---------- */
+  .content-band {
+    padding: var(--space-7) 0;
+  }
+
+  .section-heading {
+    margin-bottom: var(--space-5);
+  }
+
+  .section-heading h2 {
+    font-size: 2rem;
+    max-width: 22ch;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-5);
+  }
+
+  .feature-card {
+    background-color: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  .feature-card h3 {
+    font-size: 1.15rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-2);
+  }
+
+  .feature-card p {
+    color: var(--color-text-muted);
+    font-size: 0.96rem;
+    margin: 0;
+  }
+
+  @media (max-width: 760px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__art {
+      order: -1;
+    }
+
+    .hero__symbol {
+      width: min(220px, 60%);
+    }
+  }
+</style>
