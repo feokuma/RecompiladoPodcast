@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Pictogram from "../../components/Pictogram.astro";
 import { episodes } from "../../data/episodes";
 
 export function getStaticPaths() {
@@ -20,7 +21,10 @@ const description = descricao;
       <header class="episode-head">
         <img src={capa} alt="" width="512" height="512" loading="eager" class="episode-cover" />
         <div>
-          <p class="label">
+          <p class="label episode-label">
+            <span class="episode-label__icon" aria-hidden="true">
+              <Pictogram name="conversa" size={16} />
+            </span>
             {numeroLabel} · {categoria}
           </p>
           <h1 class="episode-title">{titulo}</h1>
@@ -53,6 +57,17 @@ const description = descricao;
 
   .back-link:hover {
     color: var(--color-green);
+  }
+
+  .episode-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .episode-label__icon {
+    color: var(--color-green);
+    display: inline-flex;
   }
 
   .episode-head {

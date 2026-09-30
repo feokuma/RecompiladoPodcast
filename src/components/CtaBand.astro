@@ -1,5 +1,12 @@
+---
+import Pictogram from "./Pictogram.astro";
+---
+
 <section class="cta-band" aria-labelledby="cta-heading">
   <div class="container cta-band__inner">
+    <span class="cta-band__icon" aria-hidden="true">
+      <Pictogram name="ouvir" size={32} />
+    </span>
     <div class="cta-band__text">
       <h2 id="cta-heading">Comece a ouvir o Recompilado</h2>
       <p class="cta-band__note">
@@ -24,6 +31,12 @@
     align-items: center;
     gap: var(--space-5);
     flex-wrap: wrap;
+  }
+
+  .cta-band__icon {
+    color: var(--color-green);
+    display: inline-flex;
+    flex-shrink: 0;
   }
 
   .cta-band__text {

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Pictogram from "../components/Pictogram.astro";
 ---
 
 <BaseLayout>
@@ -41,6 +42,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
       <div class="feature-grid">
         <article class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">
+            <Pictogram name="codigo" size={28} />
+          </span>
           <h3>Engenharia com contexto</h3>
           <p>
             Desenvolvimento, arquitetura, qualidade e entrega explicados com o
@@ -48,6 +52,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
         </article>
         <article class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">
+            <Pictogram name="comunidade" size={28} />
+          </span>
           <h3>Produto e pessoas</h3>
           <p>
             Colaboração, liderança, times, organização e saúde mental: o lado
@@ -55,6 +62,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
         </article>
         <article class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">
+            <Pictogram name="build" size={28} />
+          </span>
           <h3>Atualização constante</h3>
           <p>
             Os novos episódios ficam reunidos em uma área dedicada, para você
@@ -169,6 +179,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-lg);
     padding: var(--space-5);
+  }
+
+  .feature-card__icon {
+    color: var(--color-green);
+    display: inline-flex;
+    margin-bottom: var(--space-3);
   }
 
   .feature-card h3 {

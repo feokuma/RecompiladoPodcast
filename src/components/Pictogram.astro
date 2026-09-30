@@ -1,0 +1,95 @@
+---
+interface Props {
+  name:
+    | "codigo"
+    | "arquitetura"
+    | "build"
+    | "conversa"
+    | "ouvir"
+    | "comunidade"
+    | "ferramentas"
+    | "praticas";
+  size?: number;
+  ariaHidden?: boolean;
+  label?: string;
+}
+
+const { name, size = 24, ariaHidden = true, label = "" } = Astro.props;
+
+const stroke = "currentColor";
+const common = {
+  "aria-hidden": ariaHidden ? "true" : "false",
+};
+const sw = 1.7;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke={stroke}
+  stroke-width={sw}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  {...common}
+>
+  {name === "codigo" && (
+    <>
+      <path d="M8 6 3 12l5 6" />
+      <path d="m16 6 5 6-5 6" />
+      <path d="m13 4-2 16" />
+    </>
+  )}
+
+  {name === "arquitetura" && (
+    <>
+      <rect x="9" y="9" width="6" height="6" />
+      <rect x="3" y="3" width="6" height="6" />
+      <rect x="15" y="15" width="6" height="6" />
+      <path d="M6 9v6a3 3 0 0 0 3 3h6" />
+    </>
+  )}
+
+  {name === "build" && (
+    <>
+      <path d="M12 3v10" />
+      <path d="m6 8 6-5 6 5" />
+      <path d="M4 14a8 8 0 0 0 16 0" />
+    </>
+  )}
+
+  {name === "conversa" && (
+    <>
+      <path d="M4 11a8 8 0 0 1 16 0v5a2 2 0 0 1-2 2h-3" />
+      <path d="M9 18h6v3H9z" />
+    </>
+  )}
+
+  {name === "ouvir" && (
+    <>
+      <path d="M3 14v-4a9 9 0 0 1 18 0v4" />
+      <path d="M7 14h2v5H7z" />
+      <path d="M15 14h2v5h-2z" />
+    </>
+  )}
+
+  {name === "comunidade" && (
+    <>
+      <circle cx="9" cy="8" r="3" />
+      <path d="M3 20v-1a6 6 0 0 1 6-6h0a6 6 0 0 1 6 6v1" />
+      <path d="M16 5.2a3 3 0 0 1 0 5.6" />
+      <path d="M18 14a6 6 0 0 1 3 5.2V20" />
+    </>
+  )}
+
+  {name === "ferramentas" && (
+    <path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3z" />
+  )}
+
+  {name === "praticas" && (
+    <path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 16l-4.9 2.2.9-5.5-4-3.9L9.5 8z" />
+  )}
+
+  {label && <title>{label}</title>}
+</svg>

@@ -1,9 +1,17 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Pictogram from "../../components/Pictogram.astro";
 
 const title = "Sobre";
 const description =
   "Conheça o Recompilado Podcast: conversas que ajudam a construir o próximo build, falando de tecnologia e de quem trabalha com software.";
+
+const objetivos = [
+  { icon: "codigo", text: "Compartilhar conhecimento técnico e de produto." },
+  { icon: "comunidade", text: "Valorizar experiências de profissionais da comunidade." },
+  { icon: "arquitetura", text: "Manter um arquivo acessível dos episódios publicados." },
+  { icon: "conversa", text: "Aproximar ouvintes, convidados e temas relevantes." },
+] as const;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -42,11 +50,15 @@ const description =
       </div>
       <aside class="quote-panel">
         <p class="quote-panel__title">Objetivos</p>
-        <ul>
-          <li>Compartilhar conhecimento técnico e de produto.</li>
-          <li>Valorizar experiências de profissionais da comunidade.</li>
-          <li>Manter um arquivo acessível dos episódios publicados.</li>
-          <li>Aproximar ouvintes, convidados e temas relevantes.</li>
+        <ul class="objetivos">
+          {objetivos.map((o) => (
+            <li class="objetivos__item">
+              <span class="objetivos__icon" aria-hidden="true">
+                <Pictogram name={o.icon} size={20} />
+              </span>
+              {o.text}
+            </li>
+          ))}
         </ul>
         <a class="btn" href="/episodios/">Ouvir episódios</a>
       </aside>
@@ -116,14 +128,25 @@ const description =
     margin: 0 0 var(--space-3);
   }
 
-  .quote-panel ul {
+  .objetivos {
+    list-style: none;
     margin: 0 0 var(--space-5);
-    padding-left: 1.1rem;
+    padding: 0;
     color: var(--color-text-muted);
   }
 
-  .quote-panel li {
-    margin-bottom: var(--space-2);
+  .objetivos__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .objetivos__icon {
+    color: var(--color-green);
+    display: inline-flex;
+    flex-shrink: 0;
+    margin-top: 1px;
   }
 
   .btn {
