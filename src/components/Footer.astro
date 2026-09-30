@@ -1,0 +1,92 @@
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__left">
+      <img
+        src="/brand/icone-branco-transparente.png"
+        alt=""
+        width="40"
+        height="40"
+        class="site-footer__logo"
+        loading="lazy"
+      />
+      <div>
+        <p class="site-footer__name">Recompilado</p>
+        <p class="site-footer__tagline">P O D C A S T</p>
+        <p class="site-footer__note">
+          Conversas que ajudam a construir o próximo build.
+        </p>
+      </div>
+    </div>
+
+    <div class="site-footer__right">
+      <ul class="site-footer__links">
+        <li><a href="/episodios/">Episódios</a></li>
+        <li><a href="/sobre/">Sobre</a></li>
+      </ul>
+      <p class="site-footer__copyright">
+        © {new Date().getFullYear()} Recompilado Podcast
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-bg-footer);
+    border-top: 1px solid var(--color-border-subtle);
+    padding: var(--space-7) 0;
+  }
+
+  .site-footer__inner {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .site-footer__left {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .site-footer__logo {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .site-footer__name {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .site-footer__tagline {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    color: var(--color-text-muted);
+    margin: var(--space-1) 0 var(--space-2);
+  }
+
+  .site-footer__note {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .site-footer__links {
+    list-style: none;
+    margin: 0 0 var(--space-3);
+    padding: 0;
+    display: flex;
+    gap: var(--space-4);
+  }
+
+  .site-footer__copyright {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+</style>

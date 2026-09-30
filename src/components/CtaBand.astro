@@ -1,0 +1,75 @@
+<section class="cta-band" aria-labelledby="cta-heading">
+  <div class="container cta-band__inner">
+    <img
+      src="/brand/icone-verde-fundo-escuro.png"
+      alt=""
+      width="72"
+      height="72"
+      loading="lazy"
+      class="cta-band__symbol"
+    />
+    <div class="cta-band__text">
+      <h2 id="cta-heading">Comece a ouvir o Recompilado</h2>
+      <p class="cta-band__note">
+        Busque, ouça e compartilhe as conversas do programa.
+      </p>
+    </div>
+    <a class="btn btn--primary" href="/episodios/">
+      Ver episódios
+    </a>
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    background-color: var(--color-bg-elevated);
+    border-top: 1px solid var(--color-border-subtle);
+    padding: var(--space-7) 0;
+  }
+
+  .cta-band__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+  }
+
+  .cta-band__symbol {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+  }
+
+  .cta-band__text {
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .cta-band h2 {
+    font-size: 1.7rem;
+    margin: 0 0 var(--space-1);
+  }
+
+  .cta-band__note {
+    color: var(--color-text-muted);
+    font-size: 0.98rem;
+    margin: 0;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+  }
+
+  .btn--primary {
+    background-color: var(--color-green);
+    color: #071d12;
+  }
+
+  .btn--primary:hover {
+    background-color: var(--color-green-dark);
+    color: #ffffff;
+  }
+</style>

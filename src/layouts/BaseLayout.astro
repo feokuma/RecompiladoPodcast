@@ -1,0 +1,44 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Recompilado Podcast",
+  description = "Conversas que ajudam a construir o próximo build.",
+} = Astro.props;
+
+const isEpisodes = Astro.url.pathname === "/episodios/";
+const pageTitle = title === "Recompilado Podcast" ? title : `${title} · Recompilado Podcast`;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#080B0D" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/brand/capa-tecnica.png" />
+    <link rel="icon" type="image/png" href="/brand/favicon.png" />
+    <link rel="apple-touch-icon" href="/brand/favicon.png" />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="page-body">
+    <Header />
+    <main class="site-main">
+      <slot />
+    </main>
+    {!isEpisodes && <CtaBand />}
+    <Footer />
+  </body>
+</html>
