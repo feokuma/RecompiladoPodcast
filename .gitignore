@@ -1,0 +1,20 @@
+# dependências
+node_modules/
+
+# build
+dist/
+.astro/
+
+# logs e ambiente
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# editor
+.vscode/
+.idea/
+
+# tipos gerados
+*.tsbuildinfo
